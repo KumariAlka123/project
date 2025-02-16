@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Association - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Simple styles for layout and appearance */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        header nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+        }
+        section {
+            display: none;
+        }
+        section.active {
+            display: block;
+        }
+        .hero {
+            background-color: #8a8c8f;
+            color: rgba(255, 255, 255, 0.909);
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .showcase-grid {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .grid-item {
+            position: relative;
+            width: 45%;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .grid-item img {
+            width: 100%;
+            height: auto;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .grid-item:hover .overlay {
+            opacity: 1;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" data-target="home">Home</a></li>
+                <li><a href="#" data-target="about">About</a></li>
+                <li><a href="#" data-target="events">Events</a></li>
+                <li><a href="#" data-target="members">Members</a></li>
+                <li><a href="#" data-target="login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="active">
+            <div class="hero">
+                <h1>Welcome to the Alumni Association
+
+                </h1>
+                
+            </div>
+            <div class="showcase-grid">
+                <div class="grid-item">
+                    <img src="alumni.jpg" alt="Event 1">
+                    <div class="overlay">
+                        <h2>Annual Alumni Meet</h2>
+                        <p>Join us for the grand annual meet on September 15, 2024.</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="webinar.jpg" alt="Event 2">
+                    <div class="overlay">
+                        <h2>Webinar on Career Growth</h2>
+                        <p>Exclusive webinar by industry leaders on October 22, 2024.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>The Alumni Association connects past students of our university, promoting collaboration and networking opportunities for all.</p>
+        </section>
+
+        <section id="events">
+            <h2>Upcoming Events</h2>
+            <ul>
+                <li>Annual Alumni Meet - February 25, 2025</li>
+                <li>Webinar on Career Growth - March 15, 2025</li>
+            </ul>
+        </section>
+
+        <section id="members">
+            <h2>Alumni Members</h2>
+            <p>Our alumni are successful professionals spread across the globe, making a difference in various industries.</p>
+        </section>
+
+        <section id="login">
+            
+            <div class="login-container">
+                <div class="login-form">
+                    <h2>Login to Your Account</h2>
+                    <form action="home.html" method="post">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                        
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+        
+                        <button type="submit">Login</button>
+                    </form>
+                    <p class="signup-text">Don't have an account? <a href="signup.html">Sign Up</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Alumni Association. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const navLinks = document.querySelectorAll("nav ul li a");
+            const sections = document.querySelectorAll("section");
+
+            // Add click event to navigation links
+            navLinks.forEach(link => {
+                link.addEventListener("click", function(event) {
+                    event.preventDefault(); // Prevent default anchor behavior
+                    
+                    // Remove 'active' class from all sections
+                    sections.forEach(section => {
+                        section.classList.remove("active");
+                    });
+                    
+                    // Add 'active' class to the target section
+                    const targetId = link.getAttribute("data-target");
+                    const targetSection = document.getElementById(targetId);
+                    targetSection.classList.add("active");
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
